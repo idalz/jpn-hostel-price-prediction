@@ -1,0 +1,1 @@
+# japan-hostel-price-prediction
