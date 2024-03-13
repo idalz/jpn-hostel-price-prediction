@@ -27,10 +27,10 @@ class DataTransformation:
         This function is responsible for data transformation.
         """
         try:
-            num_features = ['summary.score','atmosphere',
-                        'cleanliness','facilities','location.y',
+            num_features = ['summary_score','atmosphere',
+                        'cleanliness','facilities','location_y',
                         'security','staff','valueformoney', 'distance_km']
-            cat_features =  ['City', 'rating.band']
+            cat_features =  ['city', 'rating_band']
 
             num_pipeline = Pipeline(
                 steps=[
@@ -91,7 +91,7 @@ class DataTransformation:
         
     def initiate_data_transformation(self, train_path, test_path):
         try:
-            target_feature_name = 'price.from'
+            target_feature_name = 'price_from'
 
             logging.info("Reading train and test data.")
             train_df = pd.read_csv(train_path)
@@ -102,11 +102,15 @@ class DataTransformation:
             train_df.drop(remove_features_list, axis=1, inplace=True)
             test_df.drop(remove_features_list, axis=1, inplace=True)
 
-            logging.info("Converting categorical Distance to numerical distance_km.")
-            train_df['distance_km'] = train_df['Distance'].str.extract('(\d+(\.\d+)?)').astype(float)[0]
-            train_df.drop(['Distance'], axis=1, inplace=True)
-            test_df['distance_km'] = test_df['Distance'].str.extract('(\d+(\.\d+)?)').astype(float)[0]
-            test_df.drop(['Distance'], axis=1, inplace=True)
+            logging.info(f"Replacing dots with underscores and converting to lowercase.:")
+            train_df.rename(columns=lambda x: x.replace('.', '_').lower(), inplace=True)
+            test_df.rename(columns=lambda x: x.replace('.', '_').lower(), inplace=True)
+
+            logging.info("Converting categorical distance to numerical distance_km.")
+            train_df['distance_km'] = train_df['distance'].str.extract('(\d+(\.\d+)?)').astype(float)[0]
+            train_df.drop(['distance'], axis=1, inplace=True)
+            test_df['distance_km'] = test_df['distance'].str.extract('(\d+(\.\d+)?)').astype(float)[0]
+            test_df.drop(['distance'], axis=1, inplace=True)
 
             logging.info("Removing significantly extreme outliers from target feature.")
             train_df.drop(self.get_extreme_outlier_indices(target_feature_name,train_df),inplace=True)
