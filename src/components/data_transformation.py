@@ -98,7 +98,7 @@ class DataTransformation:
             test_df = pd.read_csv(test_path)
 
             remove_features_list = ['Unnamed: 0', 'hostel.name', 'lon', 'lat']
-            logging.info("Removing irrelevant features from train and test data:", remove_features_list)
+            logging.info(f"Removing irrelevant features from train and test data:{ remove_features_list}")
             train_df.drop(remove_features_list, axis=1, inplace=True)
             test_df.drop(remove_features_list, axis=1, inplace=True)
 
