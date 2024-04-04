@@ -1,0 +1,4 @@
+,0
+Model Name,Cat Boost Regressor
+MAE,482.2235539919549
+R2,0.2667657135904744

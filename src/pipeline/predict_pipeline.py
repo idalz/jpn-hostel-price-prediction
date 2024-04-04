@@ -1,4 +1,5 @@
 import sys 
+import numpy as np
 import pandas as pd
 from src.exception import CustomException
 from src.utils import load_object
@@ -16,7 +17,7 @@ class PredictPipeline:
 
             data_scaled = preprocessor.transform(features)
             pred = model.predict(data_scaled)
-            return pred
+            return np.round(pred)
         
         except Exception as e:
             raise CustomException(e,sys)

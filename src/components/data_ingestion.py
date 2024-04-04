@@ -10,11 +10,13 @@ from dataclasses import dataclass
 
 from src.components.data_transformation import DataTransformation
 from src.components.model_trainer import ModelTrainer
+
+from kaggle.api.kaggle_api_extended import KaggleApi
 @dataclass
 class DataIngestionConfig:
-    train_data_path: str = os.path.join('artifacts', 'train.csv')
-    test_data_path: str = os.path.join('artifacts', 'test.csv')
-    raw_data_path: str = os.path.join('artifacts', 'raw.csv')
+    train_data_path: str = os.path.join('artifacts', 'data/train.csv')
+    test_data_path: str = os.path.join('artifacts', 'data/test.csv')
+    raw_data_path: str = os.path.join('artifacts', 'data/raw')
 
 class DataIngestion:
     def __init__(self):
@@ -23,12 +25,19 @@ class DataIngestion:
     def initiate_data_ingestion(self):
         logging.info("Entered the data ingestion method or component.")
         try:
-            df=pd.read_csv('notebooks/jpn-hostel-data/raw.csv') 
-            logging.info("Read the dataset as dataframe.")
+            # Connect to Kaggle API
+            api = KaggleApi()
+            api.authenticate()
 
-            os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True)
+            # Download the dataset
+            api.dataset_download_files(
+                dataset='koki25ando/hostel-world-dataset',
+                path=self.ingestion_config.raw_data_path,
+                unzip=True
+            )
+            logging.info("Data downloaded successfully.")
 
-            df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
+            df=pd.read_csv(self.ingestion_config.raw_data_path+'/Hostel.csv') 
             
             logging.info("Train test split initiated.")
             train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)
@@ -45,13 +54,3 @@ class DataIngestion:
         except Exception as e:
             raise CustomException(e,sys)
         
-if __name__=="__main__":
-    obj=DataIngestion()
-    train_data, test_data = obj.initiate_data_ingestion()
-    
-    data_transformation = DataTransformation()
-    train_arr, test_arr, _ = data_transformation.initiate_data_transformation(train_data, test_data)
-
-    model_trainer = ModelTrainer()
-    result = model_trainer.initiate_model_trainer(train_arr, test_arr)
-    print(result)

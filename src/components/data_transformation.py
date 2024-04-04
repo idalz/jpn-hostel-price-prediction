@@ -97,6 +97,10 @@ class DataTransformation:
             train_df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
 
+            logging.info("Dropping NA values train and test data.")
+            train_df.dropna(inplace=True)
+            test_df.dropna(inplace=True)
+
             remove_features_list = ['Unnamed: 0', 'hostel.name', 'lon', 'lat']
             logging.info(f"Removing irrelevant features from train and test data:{ remove_features_list}")
             train_df.drop(remove_features_list, axis=1, inplace=True)
