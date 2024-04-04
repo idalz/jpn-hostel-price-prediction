@@ -99,11 +99,12 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             var predictedPrice = document.getElementById('predictedPrice');
-            var results = "{{ results }}"; // Assuming results is a string representing the predicted price
+            var results = "{{ results }}"; 
         
-            // Check if there is a value in the results variable
+            
             if (results.trim() !== "") {
-                predictedPrice.style.display = "block"; // Show the predicted price section
+                predictedPrice.innerText = "Predicted price: " + results + " JPY";
+                predictedPrice.style.display = "block";
             }
         });
     </script>
