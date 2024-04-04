@@ -1,0 +1,34 @@
+<header>
+    <div class="logo">NihonHostelPricer</div>
+    <nav class="navigation">
+        <a href="/">Home</a>
+        <a href="/predict">Make a Prediction</a>
+        <a href="/about">About this Project</a>
+    </nav>
+</header>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    var logoText = document.querySelector('.logo').textContent;
+
+    // Split the text into an array of characters
+    var logoLetters = logoText.split('');
+
+    // Loop through the letters
+    for (var i = 0; i < logoLetters.length; i++) {
+        // Check if the current letter is N, C, or P
+        if (logoLetters[i] === 'N' || logoLetters[i] === 'H' || logoLetters[i] === 'P') {
+            // Apply styles to make the letter red
+            logoLetters[i] = '<span style="color: var(--primary-color-1);">' + logoLetters[i] + '</span>';
+        }
+    }
+
+    // Join the modified letters back into a string
+    var modifiedLogoText = logoLetters.join('');
+
+    // Replace the content of the .logo element with the modified text
+    document.querySelector('.logo').innerHTML = modifiedLogoText;
+});
+</script>

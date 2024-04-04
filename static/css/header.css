@@ -1,0 +1,36 @@
+@import url(colors.css);
+
+/* ================ Style the header  ================ */
+/* =================================================== */
+
+/* Updated styles for header */
+header {
+    color: white;
+    padding: 20px 0; /* Increase padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px; /* Increase padding */
+    backdrop-filter: blur(1px);
+}
+
+.logo {
+    font-size: 36px; /* Increase font size */
+    font-weight: bold;
+}
+
+.navigation {
+    display: flex;
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    padding: 20px 20px; /* Increase padding */
+    font-size: 24px; /* Increase font size */
+    transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+    color: var(--primary-color-1); 
+}

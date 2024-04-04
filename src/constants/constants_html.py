@@ -1,13 +1,13 @@
 index_dict = {
     "title": "Home",
-    "quote_h2": "Choose <span>Features</span><br> Get <span>Estimates</span>",
-    "quote_p": "Effortlessly predict car prices by selecting features and receiving instant estimates using our trained neural network.",
+    "quote_h2": "Craft Your <span>Dream</span> Stay",
+    "quote_p": "Discover the magic of Japan without breaking the bank! Predict hostel prices effortlessly with our innovative tool.",
     "quote_button": "Make a Prediction"
 }
 
 predict_dict = {
-    "title": "Car Information Form",
-    "form_title": "Car Information Form",
+    "title": "Hostel Information",
+    "form_title": "Hostel Information Form",
     "form_button": "Predict Price"
 }
 
@@ -16,45 +16,50 @@ about_dict = {
     ### About the project
     "project_title": "About the Project",
     "project_descr": """
-    In the automotive market, determining the fair price of a car can be challenging for both buyers and sellers.
-    Prices can vary significantly based on factors such as make, model, year, mileage, and additional features. 
-    With such complexity, buyers often struggle to assess whether they are getting a good deal, while sellers may have difficulty setting competitive prices. 
-    This lack of transparency can lead to frustration and uncertainty in the car-buying process. <br> <br>  
+    <p>Navigating the diverse and dynamic landscape of hostel accommodation in Japan presents a challenge for travelers seeking to estimate costs accurately.
+    With a multitude of factors influencing hostel prices, including city, distance from attractions, and various quality metrics, 
+    travelers often lack the tools to make informed decisions regarding their accommodation budget. 
+    Without access to sophisticated data analysis techniques, travelers risk overpaying or underestimating costs,
+    leading to potential budgetary constraints or unexpected expenses during their stay.</p>
 
-    Our <strong>main goal</strong> is to harness the power of PyTorch neural networks to develop a regression model capable of accurately <strong>predicting car prices</strong>. 
-    By leveraging machine learning techniques and a comprehensive dataset, our objective is to create a tool that empowers both buyers and sellers with reliable price estimates. 
+    <br><br>
+
+    <p><strong>Our objective</strong> is to develop an advanced regressor model capable of accurately <strong>predicting hostel prices in Japan</strong>.
+    Leveraging a comprehensive dataset comprising critical features such as city, distance from attractions, and summary scores, 
+    our aim is to empower travelers with a precise estimation tool for hostel accommodation costs. 
+    Through the creation of this regressor model, we seek to enhance the travel planning experience, 
+    enabling individuals to make well-informed decisions and optimize their budget allocation for accommodation expenses 
+    while exploring the rich cultural tapestry of Japan.</p>
+ 
     """,
     ### About the model
     "model_title": "About the Model",
     "model_descr": """
-    Our model utilizes a simple <strong> neural network architecture implemented using PyTorch</strong>, trained on a comprehensive dataset from Kaggle.
-    With input, hidden, and output layers, the model employs fully connected linear units and activation functions to capture intricate data patterns.
-    Through iterative training using techniques like gradient descent, it minimizes prediction errors. During training, features are preprocessed, scaled, and encoded for optimal performance.
-    Leveraging PyTorch's efficiency, the model iteratively learns from the data. 
-    With a <strong>Mean Root Squared Error (MRSE) of 8145</strong>, our model showcases a good accuracy in predicting car prices, 
-    underscoring its effectiveness in capturing the nuanced relationships between car features and prices.
+    <p>After experimenting with various models, the <strong>CatBoost Regressor</strong> was ultimately chosen due to slightly improved results.
+    However, it's important to note that the model's performance still falls short of expectations. 
+    Despite its selection and a pretty ok <strong>MAE of 482.22</strong> within a price range of 1000 to 4000 (with some outliers exceeding 6000),
+    the low <strong>R-squared value of 0.26</strong> during evaluation indicate substantial room for improvement. 
+    While these adjustments show potential for enhancement, it's evident that further refinement and exploration of alternative strategies are necessary
+    to achieve satisfactory predictive performance.</p>
+
     """,
     ### About the data
     "data_title": "About the Data",
     "data_descr": """
-    <p>The dataset used in this project was sourced from Kaggle's <a href="https://www.kaggle.com/datasets/deepcontractor/car-price-prediction-challenge" style="color: var(--primary-color-1)";>
-    Car Price Prediction Challenge</a>. 
-    It comprises a collection of car listings along with various features used for predicting car prices.</p>
-
-    <p><strong>Price:</strong> The price of the car (target variable).<br>
-    <strong>Manufacturer:</strong> The manufacturer of the car.<br>
-    <strong>Category:</strong> The category of the car.<br>
-    <strong>Leather interior:</strong> Indicates whether the car has leather interior or not.<br>
-    <strong>Fuel type:</strong> The type of fuel used by the car.<br>
-    <strong>Cylinders:</strong> The number of cylinders in the car's engine.<br>
-    <strong>Gear box type:</strong> The type of gear box used in the car.<br>
-    <strong>Drive wheels:</strong> The type of drive wheels in the car (e.g., front-wheel drive, rear-wheel drive).<br>
-    <strong>Doors:</strong> The number of doors in the car.<br>
-    <strong>Wheel:</strong> The type of wheel used in the car.<br>
-    <strong>Color:</strong> The color of the car.<br>
-    <strong>Airbags:</strong> The number of airbags in the car.<br>
-    <strong>EngineVolume:</strong> The volume of the car's engine.<br>
-    <strong>Mileage:</strong> The mileage of the car in kilometers.<br>
-    <strong>Prod. year:</strong> Year the car was produced.</p>
-    """,
+    <p>The dataset used in this project was sourced from Kaggle's <a href="https://www.kaggle.com/datasets/koki25ando/hostel-world-dataset" style="color: var(--primary-color-1)";>
+    Japan Hostel Dataset</a>. 
+    It comprises a collection of hostel listings along with various features used for predicting hostel prices.</p>
+    <p><strong>City:</strong> City name where the hostel is located</p>
+    <p><strong>price.from:</strong> Minimum Price for a 1-night stay</p>
+    <p><strong>Distance:</strong> Distance from the city center (km)</p>
+    <p><strong>summary.score:</strong> Summary score of ratings</p>
+    <p><strong>rating.band:</strong> Rating band</p>
+    <p><strong>atmosphere:</strong> Rating score of atmosphere</p>
+    <p><strong>cleanliness:</strong> Rating score of cleanliness</p>
+    <p><strong>facilities:</strong> Rating score of facilities</p>
+    <p><strong>location.y:</strong> Rating score of location</p>
+    <p><strong>security:</strong> Rating score of security</p>
+    <p><strong>staff:</strong> Rating score of staff</p>
+    <p><strong>valueformoney:</strong> Rating score of value for money</p>
+        """,
 }

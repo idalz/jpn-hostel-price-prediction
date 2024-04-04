@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ content['title']}}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/predict.css') }}">
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="container">
+        <h2>{{ content['form_title'] }}</h2>
+        <form id="hostelForm" action="{{url_for('predict')}}" method="POST">
+            <label for="city">City:</label>
+            <select id="city" name="city" required>
+                <option value="Osaka">Osaka</option>
+                <option value="Fukuoka-City">Fukuoka-City</option>
+                <option value="Tokyo">Tokyo</option>
+                <option value="Hiroshima">Hiroshima</option>
+                <option value="Kyoto">Kyoto</option>
+            </select><br>
+
+            <label for="distance_km">Distance from City Center (km):</label>
+            <input type="number" id="distance" name="distance" required><br>
+
+            <label for="ratingBand">Rating Band:</label>
+            <select id="ratingBand" name="ratingBand" required>
+                <option value="Superb">Superb</option>
+                <option value="Fabulous">Fabulous</option>
+                <option value="Very Good">Very Good</option>
+                <option value="Rating">Rating</option>
+                <option value="Good">Good</option>
+            </select><br>
+
+            <label for="atmosphere">Atmosphere Rating:</label>
+            <input type="number" id="atmosphere" name="atmosphere" step="0.1" min="0" max="10" required><br>
+
+            <label for="cleanliness">Cleanliness Rating:</label>
+            <input type="number" id="cleanliness" name="cleanliness" step="0.1" min="0" max="10" required><br>
+
+            <label for="facilities">Facilities Rating:</label>
+            <input type="number" id="facilities" name="facilities" step="0.1" min="0" max="10" required><br>
+
+            <label for="location">Location Rating:</label>
+            <input type="number" id="location" name="location" step="0.1" min="0" max="10" required><br>
+
+            <label for="security">Security Rating:</label>
+            <input type="number" id="security" name="security" step="0.1" min="0" max="10" required><br>
+
+            <label for="staff">Staff Rating:</label>
+            <input type="number" id="staff" name="staff" step="0.1" min="0" max="10" required><br>
+
+            <label for="valueForMoney">Value for Money Rating:</label>
+            <input type="number" id="valueForMoney" name="valueForMoney" step="0.1" min="0" max="10" required><br>
+
+            <label for="summaryScore">Summary Score (Avg of Ratings):</label>
+            <input type="text" id="summaryScore" name="summaryScore" readonly><br>
+            <div class="submit-container">
+                <input type="submit" value="Submit">
+            </div>
+            <h2 id="predictedPrice" class="predicted-price" style="display: none;">
+                Predicted price: {{results}}
+            </h2>
+        </form>
+    </div>
+
+    <script>
+        // Calculate and update summary score whenever any rating field changes
+        function updateSummaryScore() {
+            var atmosphere = parseFloat(document.getElementById('atmosphere').value);
+            var cleanliness = parseFloat(document.getElementById('cleanliness').value);
+            var facilities = parseFloat(document.getElementById('facilities').value);
+            var location = parseFloat(document.getElementById('location').value);
+            var security = parseFloat(document.getElementById('security').value);
+            var staff = parseFloat(document.getElementById('staff').value);
+            var valueForMoney = parseFloat(document.getElementById('valueForMoney').value);
+        
+            var avgRating = (atmosphere + cleanliness + facilities + location + security + staff + valueForMoney) / 7;
+        
+            var summaryScoreValue = !isNaN(avgRating) ? avgRating.toFixed(2) : '';
+        
+            document.getElementById('summaryScore').value = summaryScoreValue;
+        }
+        
+        // Add event listeners to rating fields
+        var ratingFields = document.querySelectorAll('input[type="number"]');
+        ratingFields.forEach(function(field) {
+            field.addEventListener('input', updateSummaryScore);
+        });
+        
+        // Initially calculate summary score
+        updateSummaryScore();
+        
+        // Submit the form
+        document.getElementById('hostelForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            this.submit();
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var predictedPrice = document.getElementById('predictedPrice');
+            var results = "{{ results }}"; // Assuming results is a string representing the predicted price
+        
+            // Check if there is a value in the results variable
+            if (results.trim() !== "") {
+                predictedPrice.style.display = "block"; // Show the predicted price section
+            }
+        });
+    </script>
+</body>
+</html>
