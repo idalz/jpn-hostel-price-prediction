@@ -11,7 +11,7 @@ An end-to-end project utilizing catboost, Flask, Docker, and GitHub Actions for 
 - [Project Workflow](#project-workflow)
 - [Web Application](#web-application)
 - [Deploy and Run the Application with Docker](#deploy-and-run-the-application-with-docker)
-- [AWS CI/CD Deployment with GitHub Actions](#aws-cicd-deployment-with-github-actions)
+- [Heroku CI/CD Deployment with GitHub Actions](#heroku-cicd-deployment-with-github-actions)
 - [License](#license)
  
 ---
