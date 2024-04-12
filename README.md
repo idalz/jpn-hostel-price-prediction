@@ -22,7 +22,7 @@ This project aims to predict Japan's hostel prices per night based on their feat
 1. **Data Collection**: Data is obtained from Kaggle's [Hostel World Dataset](https://www.kaggle.com/datasets/koki25ando/hostel-world-dataset) using the Kaggle API. This dataset includes various hostel features such as ratings, Distance from city center, and summary score of the hostel.
 2. **Data Preprocessing**: The collected data undergoes preprocessing to clean, transform, and prepare it for model training.
 3. **Model Training**: Several models are validated, and the best one is chosen based on its Mean Absolute Error (MAE) score. The selected model is then fine-tuned and evaluated using the test data.
-5. **Web Application**: A user-friendly web application is developed to allow users to input hostel features and receive real-time price predictions.
+5. **Web Application**: A user-friendly web application is developed to allow users to input hostel features and receive price predictions.
 
 By combining data collection, preprocessing, model training, model evaluation, and web development techniques, this project offers a comprehensive solution for hostel price prediction that is easily accessible and usable by users.
 
