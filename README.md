@@ -84,7 +84,7 @@ pip install -r requirements.txt
 
 ### Executing the Training Pipeline
 
-To prepare the application for use, you'll need to execute the training pipeline. You can accomplish this by running the `main.py`: 
+If you want to train a new model, you'll need to execute the training pipeline. You can accomplish this by running the `main.py`: 
 
 ```bash
 python main.py
