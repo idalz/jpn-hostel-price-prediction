@@ -1,10 +1,8 @@
 # Japan's Hostels Price Prediction
 
-An end-to-end project utilizing catboost, Flask, Docker, and GitHub Actions for CI/CD deployment on Heroku.
+A **Flask**-based web app to predict hostel prices in Japan using **CatBoost**. Integrated **Docker** and **GitHub Actions** for CI/CD deployment to **Heroku**, delivering an accessible end-to-end ML solution.  
 
 ---
-
-If you'd like to **explore the web app**, feel free to check out its demo on my [Hugging Face Spaces](https://huggingface.co/spaces/idalz/jpn-hostel-price-prediction) page.
 
 To **explore the research** conducted for the project, refer to the project's [Research Notebook](https://github.com/idalz/jpn-hostel-price-prediction/blob/main/notebooks/00_idalz_research-notebook.ipynb).
 
