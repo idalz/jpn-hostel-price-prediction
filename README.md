@@ -142,7 +142,7 @@ The home page serves as the primary interface for users and provides an overview
 
 #### Form Page
 
-The form page enables users to input various car features. Upon submission, the form triggers a POST request to the server to generate price predictions based on the provided features.
+The form page enables users to input various preferences. Upon submission, the form triggers a POST request to the server to generate price predictions based on the provided preferences.
 
 ![Form Page](static/images/form_page_img.png)
 *Figure 2: Form Page*
